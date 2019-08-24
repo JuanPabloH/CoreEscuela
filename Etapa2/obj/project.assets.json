@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\platzi\\CoreEscuela\\CoreEscuela\\Etapa1\\Etapa1.csproj",
+      "projectUniqueName": "D:\\platzi\\CoreEscuela\\CoreEscuela\\Etapa2\\Etapa1.csproj",
       "projectName": "Etapa1",
-      "projectPath": "D:\\platzi\\CoreEscuela\\CoreEscuela\\Etapa1\\Etapa1.csproj",
+      "projectPath": "D:\\platzi\\CoreEscuela\\CoreEscuela\\Etapa2\\Etapa1.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "D:\\platzi\\CoreEscuela\\CoreEscuela\\Etapa1\\obj\\",
+      "outputPath": "D:\\platzi\\CoreEscuela\\CoreEscuela\\Etapa2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
