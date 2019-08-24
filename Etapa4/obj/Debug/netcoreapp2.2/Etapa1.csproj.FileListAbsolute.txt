@@ -31,3 +31,14 @@ D:\platzi\CoreEscuela\CoreEscuela\Etapa3\obj\Debug\netcoreapp2.2\Etapa1.Assembly
 D:\platzi\CoreEscuela\CoreEscuela\Etapa3\obj\Debug\netcoreapp2.2\Etapa1.AssemblyInfo.cs
 D:\platzi\CoreEscuela\CoreEscuela\Etapa3\obj\Debug\netcoreapp2.2\Etapa1.dll
 D:\platzi\CoreEscuela\CoreEscuela\Etapa3\obj\Debug\netcoreapp2.2\Etapa1.pdb
+D:\platzi\CoreEscuela\CoreEscuela\Etapa4\bin\Debug\netcoreapp2.2\Etapa1.deps.json
+D:\platzi\CoreEscuela\CoreEscuela\Etapa4\bin\Debug\netcoreapp2.2\Etapa1.runtimeconfig.json
+D:\platzi\CoreEscuela\CoreEscuela\Etapa4\bin\Debug\netcoreapp2.2\Etapa1.runtimeconfig.dev.json
+D:\platzi\CoreEscuela\CoreEscuela\Etapa4\bin\Debug\netcoreapp2.2\Etapa1.dll
+D:\platzi\CoreEscuela\CoreEscuela\Etapa4\bin\Debug\netcoreapp2.2\Etapa1.pdb
+D:\platzi\CoreEscuela\CoreEscuela\Etapa4\obj\Debug\netcoreapp2.2\Etapa1.csprojAssemblyReference.cache
+D:\platzi\CoreEscuela\CoreEscuela\Etapa4\obj\Debug\netcoreapp2.2\Etapa1.csproj.CoreCompileInputs.cache
+D:\platzi\CoreEscuela\CoreEscuela\Etapa4\obj\Debug\netcoreapp2.2\Etapa1.AssemblyInfoInputs.cache
+D:\platzi\CoreEscuela\CoreEscuela\Etapa4\obj\Debug\netcoreapp2.2\Etapa1.AssemblyInfo.cs
+D:\platzi\CoreEscuela\CoreEscuela\Etapa4\obj\Debug\netcoreapp2.2\Etapa1.dll
+D:\platzi\CoreEscuela\CoreEscuela\Etapa4\obj\Debug\netcoreapp2.2\Etapa1.pdb

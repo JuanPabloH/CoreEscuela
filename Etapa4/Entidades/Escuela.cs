@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System;
 
 namespace  CoreEscuela.Entidades
 {
-    class Escuela
+    public class Escuela
     {
+        public string UniqueId { get; private set; }= Guid.NewGuid().ToString();
         string nombre;
         public string Nombre{
             get{return nombre;}
