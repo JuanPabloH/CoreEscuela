@@ -29,7 +29,28 @@ namespace CoreEscuela
 
         private void CargarEvaluaciones()
         {
-            throw new NotImplementedException();
+            foreach (var curso in Escuela.Cursos)
+            {
+                foreach (var asignatura in curso.Asignatura)
+                {
+                    foreach (var alumno in curso.Alumno)
+                    {
+                        var rdn = new Random(System.Environment.TickCount);
+
+                        for (int i = 0; i < 5; i++)
+                        {
+                            var ev= new Evaluaciones
+                            {
+                                Asignatura= asignatura,
+                                Nombre= $"{asignatura.Nombre} Ev #{i+1}",
+                                nota= (float)(5*rdn.NextDouble()),
+                                Alumno=alumno
+                            };
+                            alumno.Evaluaciones.Add(ev);
+                        }
+                    }
+                }
+            }
         }
 
         private void CargarAsignaturas()
