@@ -11,7 +11,7 @@ namespace Etapa1
             
             var escuela=new Escuela("Mi escuelita",2010,TiposEscuela.Primaria,
                         ciudad:"Sogamoso", pais:"Colombia");
-            
+            var listaCursos= new List<Curso>();
             escuela.Cursos= new Curso[]{
                 new Curso{Nombre="101"},
                 new Curso{Nombre="201"},
