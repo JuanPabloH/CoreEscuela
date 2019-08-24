@@ -7,10 +7,10 @@ namespace Etapa1
         static void Main(string[] args)
         {
             
-            var escuela=new Escuela("Mi escuelita",2010);
-            escuela.Pais= "Colombia";
-            escuela.Ciudad= "Sogamoso";
-            Console.WriteLine(escuela.Nombre);
+            var escuela=new Escuela("Mi escuelita",2010,TiposEscuela.Primaria,
+                        ciudad:"Sogamoso", pais:"Colombia");
+            escuela.TipoEscuela= TiposEscuela.Primaria; 
+            Console.WriteLine(escuela);
         }
     }
 }
