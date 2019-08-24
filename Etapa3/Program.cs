@@ -11,19 +11,50 @@ namespace Etapa1
             
             var escuela=new Escuela("Mi escuelita",2010,TiposEscuela.Primaria,
                         ciudad:"Sogamoso", pais:"Colombia");
-            var listaCursos= new List<Curso>();
-            escuela.Cursos= new Curso[]{
-                new Curso{Nombre="101"},
-                new Curso{Nombre="201"},
-                new Curso{Nombre="301"}
+            escuela.Cursos= new List<Curso>(){
+                new Curso{Nombre="101",Jornada=TiposJornada.Mañana},
+                new Curso{Nombre="201",Jornada=TiposJornada.Mañana},
+                new Curso{Nombre="301",Jornada=TiposJornada.Mañana}
+            };
+            escuela.Cursos.Add(new Curso(){Nombre="102",Jornada=TiposJornada.Mañana});
+            escuela.Cursos.Add(new Curso(){Nombre="202",Jornada=TiposJornada.Tarde});
+            
+            var otraColeccion=new List<Curso>(){
+                new Curso{Nombre="103",Jornada=TiposJornada.Mañana},
+                new Curso{Nombre="501",Jornada=TiposJornada.Mañana},
+                new Curso{Nombre="501",Jornada=TiposJornada.Tarde}
             };
             
+            
+            escuela.Cursos.AddRange(otraColeccion);
+            
+            ImprimirCursosEscuela(escuela);
+   /*         Predicate<Curso> miAlgoritmo = Predicado;
+            //predicado
+            //escuela.Cursos.RemoveAll(miAlgoritmo);
+            
+            //delegado
+            escuela.Cursos.RemoveAll(delegate(Curso cur)
+            {
+                return cur.Nombre=="301";
+            });
+            //lambda
+            escuela.Cursos.RemoveAll(cur =>cur.Nombre=="501" && cur.Jornada==TiposJornada.Tarde);
+    */
+
+            WriteLine("======================");
+            
+
             ImprimirCursosEscuela(escuela);
             
 
 
         }
 
+        private static bool Predicado(Curso curobj)
+        {
+            return curobj.Nombre== "301";
+        }
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
             WriteLine("==============================");
