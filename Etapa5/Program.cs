@@ -3,6 +3,8 @@ using CoreEscuela.Entidades;
 using static System.Console;
 using System.Collections.Generic;
 using CoreEscuela.util;
+using System.Linq;
+
 namespace CoreEscuela
 {
     class Program
@@ -16,6 +18,11 @@ namespace CoreEscuela
             ImprimirCursosEscuela(engine.Escuela);
             var listaObj= engine.GetObjetosEscuela();
             
+            
+
+            var listaLugar= from obj in listaObj
+                            where obj is ILugar
+                            select (ILugar) obj;
             
         }
 
