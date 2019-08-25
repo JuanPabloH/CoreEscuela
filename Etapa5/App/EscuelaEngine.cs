@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace CoreEscuela
 {
-    public class EscuelaEngine
+    public sealed class EscuelaEngine
     {
         public Escuela Escuela{get;set;}
 
@@ -96,6 +96,25 @@ namespace CoreEscuela
                 int cantRandom= rnd.Next(5,20);
                 curso.Alumno=GenerarAlumnos(cantRandom);
             }
+        }
+
+        public List<ObjetoEscuelaBase> GetObjetosEscuela()
+        {
+            var listaObj= new List<ObjetoEscuelaBase>();
+            listaObj.Add(Escuela);
+            listaObj.AddRange(Escuela.Cursos);
+            
+            foreach (var curso in Escuela.Cursos)
+            {
+                listaObj.AddRange(curso.Asignatura);
+                listaObj.AddRange(curso.Alumno);
+                foreach (var alumno in curso.Alumno)
+                {
+                    listaObj.AddRange(alumno.Evaluaciones);
+                }
+            }
+            
+            return listaObj;
         }
     }
 
