@@ -14,22 +14,19 @@ namespace CoreEscuela
             var engine= new EscuelaEngine();
             Printer.EscribirTitulo("Bienvenidos a la escuela");
             //Printer.Beep(10000);
-            engine.Inicializar();
             ImprimirCursosEscuela(engine.Escuela);
-            var listaObj= engine.GetObjetosEscuela();
-            
-            
 
-            var listaLugar= from obj in listaObj
-                            where obj is ILugar
-                            select (ILugar) obj;
+            Dictionary<int,string> diccionario= new Dictionary<int,string>();
+            diccionario.Add(10,"Juan");
+            diccionario.Add(5,"Vivis");
+
+            foreach (var keyValPair in diccionario)
+            {
+                WriteLine($"Key: {keyValPair.Key} , Valor: {keyValPair.Value}");
+            }
             
         }
 
-        private static bool Predicado(Curso curobj)
-        {
-            return curobj.Nombre== "301";
-        }
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
             Printer.EscribirTitulo("Cursos de la escuela");
