@@ -1,4 +1,5 @@
 using CoreEscuela.Entidades;
+using CoreEscuela.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,19 +27,80 @@ namespace CoreEscuela
         }
 
 
-        public Dictionary<string,IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
+        public void ImprimirDiccionario(Dictionary<LlaveDiccionario,IEnumerable<ObjetoEscuelaBase>> dic,
+                                        bool impEv=false)
+        {
+            foreach (var obj in dic)
+            {
+                Printer.EscribirTitulo(obj.Key.ToString());
+                foreach (var val in obj.Value)
+                {
+
+                    switch (obj.Key)
+                    {
+                        case LlaveDiccionario.Evaluación:
+                            if (impEv)
+                                Console.WriteLine(val);
+                            break;
+                        case LlaveDiccionario.Escuela:
+                            Console.WriteLine("Escuela: " + val);
+                            break;
+                        case LlaveDiccionario.Alumno:
+                            Console.WriteLine("Alumno: " + val.Nombre);
+                            break;
+                        case LlaveDiccionario.Curso:
+                            var curtmp = val as Curso;
+                            if(curtmp != null)
+                            {
+                                int count = curtmp.Alumno.Count;
+                                Console.WriteLine("Curso: " + val.Nombre + " Cantidad Alumnos: " + count);
+                            }
+                            break;
+                        default:
+                            Console.WriteLine(val);
+                            break;
+                    }
+                }
+            }
+        }
+
+        public Dictionary<LlaveDiccionario,IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
         {
 
             
-            var diccionario= new Dictionary<string,IEnumerable<ObjetoEscuelaBase>>();
-            diccionario.Add("Escuela",new [] {Escuela} );
-            diccionario.Add("Cursos",Escuela.Cursos.Cast<ObjetoEscuelaBase>());
+            var diccionario= new Dictionary<LlaveDiccionario,IEnumerable<ObjetoEscuelaBase>>();
+            diccionario.Add(LlaveDiccionario.Escuela, new[] { Escuela });
+            diccionario.Add(LlaveDiccionario.Curso, Escuela.Cursos.Cast<ObjetoEscuelaBase>());
 
+            
+            var listatmp= new List<Evaluación>();
+            var listatmpas= new List<Asignatura>();
+            var listatmpal= new List<Alumno>();
+            foreach (var curso in Escuela.Cursos)
+            {
+                listatmpas.AddRange(curso.Asignatura);
+                listatmpal.AddRange(curso.Alumno);
+                
+                
+                foreach (var alum in curso.Alumno)
+                {
+                    listatmp.AddRange(alum.Evaluaciones);
+                    
+                }
+                
+                
+            }
+            diccionario.Add(LlaveDiccionario.Evaluación,
+                                                    listatmp.Cast<ObjetoEscuelaBase>());
 
-
-
+            diccionario.Add(LlaveDiccionario.Asignatura,
+                                            listatmpas.Cast<ObjetoEscuelaBase>());
+                diccionario.Add(LlaveDiccionario.Alumno,
+                                            listatmpal.Cast<ObjetoEscuelaBase>());
             return diccionario;
         }
+
+#region métodos obtener objetos escuela
         public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
             bool traeEvalicaciones= true,
             bool traeAlumnos= true,
@@ -139,7 +201,7 @@ namespace CoreEscuela
             return listaObj.AsReadOnly();
         }
 
-
+        #endregion
 #region Métodos de carga
         private List<Alumno> GenerarAlumnos(int cantidad)
         {
@@ -156,13 +218,14 @@ namespace CoreEscuela
         }
         private void CargarEvaluaciones()
         {
+            var rdn = new Random();
             foreach (var curso in Escuela.Cursos)
             {
                 foreach (var asignatura in curso.Asignatura)
                 {
                     foreach (var alumno in curso.Alumno)
                     {
-                        var rdn = new Random(System.Environment.TickCount);
+                        
 
                         for (int i = 0; i < 5; i++)
                         {
@@ -170,7 +233,7 @@ namespace CoreEscuela
                             {
                                 Asignatura= asignatura,
                                 Nombre= $"{asignatura.Nombre} Ev #{i+1}",
-                                nota= (float)(5*rdn.NextDouble()),
+                                nota= MathF.Round((float)(5*rdn.NextDouble()), 2),
                                 Alumno=alumno
                             };
                             alumno.Evaluaciones.Add(ev);
