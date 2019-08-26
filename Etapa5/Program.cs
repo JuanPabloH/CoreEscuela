@@ -4,6 +4,7 @@ using static System.Console;
 using System.Collections.Generic;
 using CoreEscuela.util;
 using System.Linq;
+using CoreEscuela.App;
 
 namespace CoreEscuela
 {
@@ -16,15 +17,17 @@ namespace CoreEscuela
             var engine= new EscuelaEngine();
             engine.Inicializar();
             Printer.EscribirTitulo("Bienvenidos a la escuela");
-            //Printer.Beep(10000);
-            //ImprimirCursosEscuela(engine.Escuela);
+            var reporteador= new Reporteador(engine.GetDiccionarioObjetos());
+            var evList= reporteador.GetListaEvaluaciones();
+            var asigList= reporteador.GetListaAsignatura();
+            var listaEvXAsig=reporteador.GetListaEvPorAsignatura();
 
-            var dictmp=engine.GetDiccionarioObjetos();
-
-            engine.ImprimirDiccionario(dictmp);
+            var listaPromXAsig= reporteador.GetPromedioPorAsignatura();
+            
             
         }
 
+        
         private static void AcciondelEvento(object sender, EventArgs e)
         {
             Printer.EscribirTitulo("SALIENDO");
